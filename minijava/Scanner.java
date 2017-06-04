@@ -44,11 +44,14 @@ public class Scanner {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\1\1\1\1\32\1\1\1\1\22\0\1\1\15\0\1\31"+
-    "\44\0\1\22\15\0\1\6\1\2\1\10\1\14\1\5\1\25\1\24"+
-    "\1\27\1\17\2\0\1\4\1\21\1\7\1\3\1\15\1\0\1\23"+
-    "\1\11\1\13\1\16\1\20\1\26\1\12\1\30\13\0\1\32\u1fa2\0"+
-    "\1\32\1\32\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\11\0\1\1\1\1\1\41\1\1\1\1\22\0\1\1\7\0\1\35"+
+    "\1\35\1\0\1\35\1\0\1\35\1\31\1\0\12\40\1\0\1\35"+
+    "\1\0\1\35\3\0\13\36\1\34\1\36\1\32\4\36\1\22\1\36"+
+    "\1\33\5\36\1\35\1\0\1\35\1\0\1\37\1\0\1\6\1\2"+
+    "\1\10\1\14\1\5\1\25\1\24\1\27\1\17\2\36\1\4\1\21"+
+    "\1\7\1\3\1\15\1\36\1\23\1\11\1\13\1\16\1\20\1\26"+
+    "\1\12\1\30\1\36\1\35\1\0\1\35\7\0\1\41\u1fa2\0\1\41"+
+    "\1\41\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -61,14 +64,14 @@ public class Scanner {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\17\1\14\0\1\3\13\0\1\4"+
-    "\6\0\1\5\11\0\1\6\1\0\1\7\2\0\1\10"+
-    "\1\11\1\0\1\12\1\13\10\0\1\14\5\0\1\15"+
-    "\1\16\1\0\1\17\1\0\1\20\1\21\1\22\1\0"+
-    "\1\23\1\24\1\25\13\0\1\26";
+    "\1\0\1\1\1\2\21\3\1\4\1\5\13\3\1\6"+
+    "\14\3\1\7\5\3\1\10\12\3\1\11\3\3\1\12"+
+    "\1\13\1\3\1\14\1\15\5\3\1\16\3\3\1\17"+
+    "\5\3\1\20\1\21\1\3\1\22\1\3\1\23\1\24"+
+    "\1\25\1\3\1\26\1\27\1\30\13\0\1\31";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[107];
+    int [] result = new int[111];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -93,23 +96,23 @@ public class Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\33\0\33\0\66\0\121\0\154\0\207\0\242"+
-    "\0\275\0\330\0\363\0\u010e\0\u0129\0\u0144\0\u015f\0\u017a"+
-    "\0\u0195\0\u01b0\0\u01cb\0\u01e6\0\u0201\0\u021c\0\u0237\0\u0252"+
-    "\0\u026d\0\u0288\0\u02a3\0\u02be\0\u02d9\0\u02f4\0\33\0\u030f"+
-    "\0\u032a\0\u0345\0\u0360\0\u037b\0\u0396\0\u03b1\0\u03cc\0\u03e7"+
-    "\0\u0402\0\u041d\0\33\0\u0438\0\u0453\0\u046e\0\u0489\0\u04a4"+
-    "\0\u04bf\0\33\0\u04da\0\u04f5\0\u0510\0\u052b\0\u0546\0\u0561"+
-    "\0\u057c\0\u0597\0\u05b2\0\33\0\u05cd\0\33\0\u05e8\0\u0603"+
-    "\0\33\0\33\0\u061e\0\33\0\33\0\u0639\0\u0654\0\u066f"+
-    "\0\u068a\0\u06a5\0\u06c0\0\u06db\0\u06f6\0\33\0\u0711\0\u072c"+
-    "\0\u0747\0\u0762\0\u077d\0\33\0\33\0\u0798\0\33\0\u07b3"+
-    "\0\33\0\33\0\33\0\u07ce\0\33\0\33\0\33\0\u07e9"+
-    "\0\u0804\0\u081f\0\u083a\0\u0855\0\u0870\0\u088b\0\u08a6\0\u08c1"+
-    "\0\u08dc\0\u08f7\0\33";
+    "\0\0\0\42\0\42\0\104\0\146\0\210\0\252\0\314"+
+    "\0\356\0\u0110\0\u0132\0\u0154\0\u0176\0\u0198\0\u01ba\0\u01dc"+
+    "\0\u01fe\0\u0220\0\u0242\0\u0264\0\42\0\u0286\0\u02a8\0\u02ca"+
+    "\0\u02ec\0\u030e\0\u0330\0\u0352\0\u0374\0\u0396\0\u03b8\0\u03da"+
+    "\0\u03fc\0\146\0\u041e\0\u0440\0\u0462\0\u0484\0\u04a6\0\u04c8"+
+    "\0\u04ea\0\u050c\0\u052e\0\u0550\0\u0572\0\u0594\0\146\0\u05b6"+
+    "\0\u05d8\0\u05fa\0\u061c\0\u063e\0\146\0\u0660\0\u0682\0\u06a4"+
+    "\0\u06c6\0\u06e8\0\u070a\0\u072c\0\u074e\0\u0770\0\u0792\0\146"+
+    "\0\u07b4\0\u07d6\0\u07f8\0\146\0\146\0\u081a\0\146\0\146"+
+    "\0\u083c\0\u085e\0\u0880\0\u08a2\0\u08c4\0\146\0\u08e6\0\u0908"+
+    "\0\u092a\0\146\0\u094c\0\u096e\0\u0990\0\u09b2\0\u09d4\0\146"+
+    "\0\146\0\u09f6\0\146\0\u0a18\0\146\0\146\0\146\0\u0a3a"+
+    "\0\146\0\146\0\146\0\u0a5c\0\u0a7e\0\u0aa0\0\u0ac2\0\u0ae4"+
+    "\0\u0b06\0\u0b28\0\u0b4a\0\u0b6c\0\u0b8e\0\u0bb0\0\42";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[107];
+    int [] result = new int[111];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -132,35 +135,91 @@ public class Scanner {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\2\1\5\1\6\1\2\1\7"+
-    "\1\10\1\11\1\2\1\12\1\2\1\13\1\2\1\14"+
-    "\1\15\1\16\1\17\1\20\1\2\1\21\1\22\3\2"+
-    "\37\0\1\23\34\0\1\24\31\0\1\25\5\0\1\26"+
-    "\25\0\1\27\10\0\1\30\20\0\1\31\41\0\1\32"+
-    "\42\0\1\33\3\0\1\34\21\0\1\35\23\0\1\36"+
-    "\15\0\1\37\10\0\1\40\35\0\1\41\37\0\1\42"+
-    "\14\0\1\43\7\0\1\44\33\0\1\45\53\0\1\46"+
-    "\6\0\1\47\36\0\1\50\34\0\1\51\34\0\1\52"+
-    "\45\0\1\53\10\0\1\54\34\0\1\55\32\0\1\56"+
-    "\42\0\1\57\33\0\1\60\15\0\1\61\43\0\1\62"+
-    "\36\0\1\63\32\0\1\64\36\0\1\65\20\0\1\66"+
-    "\34\0\1\67\23\0\1\70\45\0\1\71\17\0\1\72"+
-    "\52\0\1\73\13\0\1\74\32\0\1\75\31\0\1\76"+
-    "\37\0\1\77\34\0\1\100\24\0\1\101\36\0\1\102"+
-    "\25\0\1\103\42\0\1\104\25\0\1\105\42\0\1\106"+
-    "\26\0\1\107\35\0\1\110\25\0\1\111\25\0\1\112"+
-    "\33\0\1\113\40\0\1\114\26\0\1\115\34\0\1\116"+
-    "\40\0\1\117\32\0\1\120\22\0\1\121\30\0\1\122"+
-    "\50\0\1\123\14\0\1\124\32\0\1\125\33\0\1\126"+
-    "\53\0\1\127\17\0\1\130\26\0\1\131\32\0\1\132"+
-    "\46\0\1\133\27\0\1\134\20\0\1\135\32\0\1\136"+
-    "\34\0\1\137\52\0\1\140\4\0\1\141\45\0\1\142"+
-    "\27\0\1\143\50\0\1\144\16\0\1\145\40\0\1\146"+
-    "\26\0\1\147\22\0\1\150\36\0\1\151\23\0\1\152"+
-    "\35\0\1\153\23\0";
+    "\1\2\1\3\1\4\1\5\1\6\1\7\1\5\1\10"+
+    "\1\11\1\12\1\5\1\13\1\5\1\14\1\5\1\15"+
+    "\1\16\1\17\1\20\1\21\1\5\1\22\1\23\2\5"+
+    "\1\2\1\24\2\5\1\25\1\5\1\2\1\26\45\0"+
+    "\1\5\1\27\25\5\1\0\3\5\1\0\3\5\3\0"+
+    "\27\5\1\0\3\5\1\0\3\5\3\0\3\5\1\30"+
+    "\23\5\1\0\3\5\1\0\3\5\3\0\2\5\1\31"+
+    "\5\5\1\32\16\5\1\0\3\5\1\0\3\5\3\0"+
+    "\3\5\1\33\23\5\1\0\3\5\1\0\3\5\3\0"+
+    "\2\5\1\34\24\5\1\0\3\5\1\0\3\5\3\0"+
+    "\11\5\1\35\15\5\1\0\3\5\1\0\3\5\3\0"+
+    "\21\5\1\36\3\5\1\37\1\5\1\0\3\5\1\0"+
+    "\3\5\3\0\14\5\1\40\12\5\1\0\3\5\1\0"+
+    "\3\5\3\0\5\5\1\41\15\5\1\42\3\5\1\0"+
+    "\3\5\1\0\3\5\3\0\1\5\1\43\25\5\1\0"+
+    "\3\5\1\0\3\5\3\0\4\5\1\44\22\5\1\0"+
+    "\3\5\1\0\3\5\3\0\11\5\1\45\14\5\1\46"+
+    "\1\0\3\5\1\0\3\5\3\0\3\5\1\47\23\5"+
+    "\1\0\3\5\1\0\3\5\3\0\4\5\1\50\22\5"+
+    "\1\0\3\5\1\0\3\5\3\0\25\5\1\51\1\5"+
+    "\1\0\3\5\1\0\3\5\3\0\27\5\1\0\1\5"+
+    "\1\52\1\5\1\0\3\5\41\0\1\26\3\0\1\5"+
+    "\1\53\25\5\1\0\3\5\1\0\3\5\3\0\5\5"+
+    "\1\54\21\5\1\0\3\5\1\0\3\5\3\0\7\5"+
+    "\1\55\17\5\1\0\3\5\1\0\3\5\3\0\11\5"+
+    "\1\56\15\5\1\0\3\5\1\0\3\5\3\0\24\5"+
+    "\1\57\2\5\1\0\3\5\1\0\3\5\3\0\4\5"+
+    "\1\60\22\5\1\0\3\5\1\0\3\5\3\0\4\5"+
+    "\1\61\22\5\1\0\3\5\1\0\3\5\3\0\14\5"+
+    "\1\62\12\5\1\0\3\5\1\0\3\5\3\0\15\5"+
+    "\1\63\11\5\1\0\3\5\1\0\3\5\3\0\1\64"+
+    "\26\5\1\0\3\5\1\0\3\5\3\0\11\5\1\65"+
+    "\15\5\1\0\3\5\1\0\3\5\3\0\15\5\1\66"+
+    "\11\5\1\0\3\5\1\0\3\5\3\0\15\5\1\67"+
+    "\11\5\1\0\3\5\1\0\3\5\3\0\21\5\1\70"+
+    "\5\5\1\0\3\5\1\0\3\5\3\0\7\5\1\71"+
+    "\17\5\1\0\3\5\1\0\3\5\3\0\11\5\1\72"+
+    "\15\5\1\0\3\5\1\0\3\5\3\0\2\5\1\73"+
+    "\24\5\1\0\3\5\1\0\3\5\3\0\15\5\1\74"+
+    "\11\5\1\0\3\5\1\0\3\5\3\0\27\5\1\0"+
+    "\2\5\1\75\1\0\3\5\3\0\2\5\1\76\24\5"+
+    "\1\0\3\5\1\0\3\5\3\0\22\5\1\77\4\5"+
+    "\1\0\3\5\1\0\3\5\3\0\3\5\1\100\23\5"+
+    "\1\0\3\5\1\0\3\5\3\0\3\5\1\101\23\5"+
+    "\1\0\3\5\1\0\3\5\3\0\7\5\1\102\17\5"+
+    "\1\0\3\5\1\0\3\5\3\0\11\5\1\103\15\5"+
+    "\1\0\3\5\1\0\3\5\3\0\3\5\1\104\23\5"+
+    "\1\0\3\5\1\0\3\5\3\0\7\5\1\105\17\5"+
+    "\1\0\3\5\1\0\3\5\3\0\2\5\1\106\24\5"+
+    "\1\0\3\5\1\0\3\5\3\0\12\5\1\107\14\5"+
+    "\1\0\3\5\1\0\3\5\3\0\5\5\1\110\21\5"+
+    "\1\0\3\5\1\0\3\5\3\0\15\5\1\111\11\5"+
+    "\1\0\3\5\1\0\3\5\3\0\11\5\1\112\15\5"+
+    "\1\0\3\5\1\0\3\5\3\0\14\5\1\113\12\5"+
+    "\1\0\3\5\1\0\3\5\3\0\7\5\1\114\17\5"+
+    "\1\0\3\5\1\0\3\5\3\0\2\5\1\115\24\5"+
+    "\1\0\3\5\1\0\3\5\3\0\27\5\1\0\2\5"+
+    "\1\116\1\0\3\5\3\0\3\5\1\117\23\5\1\0"+
+    "\3\5\1\0\3\5\3\0\11\5\1\120\15\5\1\0"+
+    "\3\5\1\0\3\5\3\0\5\5\1\121\21\5\1\0"+
+    "\3\5\1\0\3\5\3\0\7\5\1\122\17\5\1\0"+
+    "\3\5\1\0\3\5\3\0\15\5\1\123\11\5\1\0"+
+    "\3\5\1\0\3\5\3\0\15\5\1\124\11\5\1\0"+
+    "\3\5\1\0\3\5\3\0\5\5\1\125\21\5\1\0"+
+    "\3\5\1\0\3\5\3\0\3\5\1\126\23\5\1\0"+
+    "\3\5\1\0\3\5\3\0\21\5\1\127\5\5\1\0"+
+    "\3\5\1\0\3\5\3\0\3\5\1\130\23\5\1\0"+
+    "\3\5\1\0\3\5\3\0\3\5\1\131\23\5\1\0"+
+    "\3\5\1\0\3\5\3\0\4\5\1\132\22\5\1\0"+
+    "\3\5\1\0\3\5\3\0\25\5\1\133\1\5\1\0"+
+    "\3\5\1\0\3\5\3\0\12\5\1\134\14\5\1\0"+
+    "\3\5\1\0\3\5\3\0\6\5\1\135\20\5\1\0"+
+    "\3\5\1\0\3\5\3\0\6\5\1\136\20\5\1\0"+
+    "\3\5\1\0\3\5\3\0\22\5\1\137\4\5\1\0"+
+    "\3\5\1\0\3\5\3\0\17\5\1\140\7\5\1\0"+
+    "\3\5\1\0\3\5\3\0\5\5\1\141\21\5\1\0"+
+    "\3\5\1\0\3\5\3\0\5\5\1\142\21\5\1\0"+
+    "\3\5\1\0\3\5\3\0\7\5\1\143\17\5\1\0"+
+    "\3\5\1\0\3\5\3\0\27\5\1\144\3\5\1\0"+
+    "\3\5\4\0\1\145\54\0\1\146\36\0\1\147\57\0"+
+    "\1\150\25\0\1\151\47\0\1\152\35\0\1\153\31\0"+
+    "\1\154\45\0\1\155\32\0\1\156\44\0\1\157\32\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[2322];
+    int [] result = new int[3026];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -198,13 +257,10 @@ public class Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\2\11\17\1\14\0\1\11\13\0\1\11\6\0"+
-    "\1\11\11\0\1\11\1\0\1\11\2\0\2\11\1\0"+
-    "\2\11\10\0\1\11\5\0\2\11\1\0\1\11\1\0"+
-    "\3\11\1\0\3\11\13\0\1\11";
+    "\1\0\2\11\21\1\1\11\116\1\13\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[107];
+    int [] result = new int[111];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -321,7 +377,7 @@ public class Scanner {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 118) {
+    while (i < 176) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -678,91 +734,103 @@ public class Scanner {
                (yyline+1) + ", coluna : " + (yycolumn+1) + ", char: " + 
                yytext());
             }
-          case 23: break;
+          case 26: break;
           case 2: 
             { 
             }
-          case 24: break;
-          case 3: 
-            { return new Token(Token.IF, yyline, yycolumn);
-            }
-          case 25: break;
-          case 4: 
-            { return new Token(Token.NEW, yyline, yycolumn);
-            }
-          case 26: break;
-          case 5: 
-            { return new Token(Token.INT, yyline, yycolumn);
-            }
           case 27: break;
-          case 6: 
-            { return new Token(Token.ELSE, yyline, yycolumn);
+          case 3: 
+            { return new Token(Token.ID, yytext(), yyline, yycolumn);
             }
           case 28: break;
-          case 7: 
-            { return new Token(Token.NULL, yyline, yycolumn);
+          case 4: 
+            { return new Token(yytext().charAt(0), yytext() , yyline , yycolumn);
             }
           case 29: break;
-          case 8: 
-            { return new Token(Token.TRUE, yyline, yycolumn);
+          case 5: 
+            { return new Token(Token.NUM, yytext(), yyline, yycolumn);
             }
           case 30: break;
-          case 9: 
-            { return new Token(Token.THIS, yyline, yycolumn);
+          case 6: 
+            { return new Token(Token.IF, yyline, yycolumn);
             }
           case 31: break;
-          case 10: 
-            { return new Token(Token.VOID, yyline, yycolumn);
+          case 7: 
+            { return new Token(Token.NEW, yyline, yycolumn);
             }
           case 32: break;
-          case 11: 
-            { return new Token(Token.MAIN, yyline, yycolumn);
+          case 8: 
+            { return new Token(Token.INT, yyline, yycolumn);
             }
           case 33: break;
-          case 12: 
-            { return new Token(Token.CLASS, yyline, yycolumn);
+          case 9: 
+            { return new Token(Token.ELSE, yyline, yycolumn);
             }
           case 34: break;
-          case 13: 
-            { return new Token(Token.FALSE, yyline, yycolumn);
+          case 10: 
+            { return new Token(Token.TRUE, yyline, yycolumn);
             }
           case 35: break;
-          case 14: 
-            { return new Token(Token.WHILE, yyline, yycolumn);
+          case 11: 
+            { return new Token(Token.THIS, yyline, yycolumn);
             }
           case 36: break;
-          case 15: 
-            { return new Token(Token.LENGTH, yyline, yycolumn);
+          case 12: 
+            { return new Token(Token.VOID, yyline, yycolumn);
             }
           case 37: break;
-          case 16: 
-            { return new Token(Token.STATIC, yyline, yycolumn);
+          case 13: 
+            { return new Token(Token.MAIN, yyline, yycolumn);
             }
           case 38: break;
-          case 17: 
-            { return new Token(Token.PUBLIC, yyline, yycolumn);
+          case 14: 
+            { return new Token(Token.NULL, yyline, yycolumn);
             }
           case 39: break;
-          case 18: 
-            { return new Token(Token.STRING, yyline, yycolumn);
+          case 15: 
+            { return new Token(Token.CLASS, yyline, yycolumn);
             }
           case 40: break;
-          case 19: 
-            { return new Token(Token.RETURN, yyline, yycolumn);
+          case 16: 
+            { return new Token(Token.FALSE, yyline, yycolumn);
             }
           case 41: break;
-          case 20: 
-            { return new Token(Token.BOOLEAN, yyline, yycolumn);
+          case 17: 
+            { return new Token(Token.WHILE, yyline, yycolumn);
             }
           case 42: break;
-          case 21: 
-            { return new Token(Token.EXTENDS, yyline, yycolumn);
+          case 18: 
+            { return new Token(Token.LENGTH, yyline, yycolumn);
             }
           case 43: break;
-          case 22: 
-            { return new Token(Token.PRINTLN, yyline, yycolumn);
+          case 19: 
+            { return new Token(Token.STATIC, yyline, yycolumn);
             }
           case 44: break;
+          case 20: 
+            { return new Token(Token.PUBLIC, yyline, yycolumn);
+            }
+          case 45: break;
+          case 21: 
+            { return new Token(Token.STRING, yyline, yycolumn);
+            }
+          case 46: break;
+          case 22: 
+            { return new Token(Token.RETURN, yyline, yycolumn);
+            }
+          case 47: break;
+          case 23: 
+            { return new Token(Token.BOOLEAN, yyline, yycolumn);
+            }
+          case 48: break;
+          case 24: 
+            { return new Token(Token.EXTENDS, yyline, yycolumn);
+            }
+          case 49: break;
+          case 25: 
+            { return new Token(Token.PRINTLN, yyline, yycolumn);
+            }
+          case 50: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

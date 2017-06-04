@@ -61,7 +61,7 @@ import java.io.IOException;
 */
 
 // Espaços são ignorados
-[ \r\n\t\f]    { }
+[ \r\n\t\f]    			{ }
 
 // Palavras Reservadas
 "boolean"      			{ return new Token(Token.BOOLEAN, yyline, yycolumn); }
@@ -84,16 +84,13 @@ import java.io.IOException;
 "this"      			{ return new Token(Token.THIS, yyline, yycolumn); }
 "new"      				{ return new Token(Token.NEW, yyline, yycolumn); }
 "NULL"      			{ return new Token(Token.NULL, yyline, yycolumn); }
-[a-zA-Z][a-zA-Z0-9_]*	{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
-[0-9]+					{ return new Token(Token.NUM, yytext(), yyline, yycolumn); }
-[+]|[-]|;|[(]|[)]|[=] 	{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
-["][!"]*["]				{ return new Token(Token.TEXT, yytext(), yyline, yycolumn); }
+[+]|[-]|[;]|[(]|[)]|[=]|[{]|[}]|[\[]|[\]] 	{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
 
 // Identificadores
-[a-zA-Z][a-zA-Z0-9_]*	{ return new Token(Token.ID, yytext(), yyline, yycolumn) }
+[a-zA-Z][a-zA-Z0-9_]*	{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
 
 // Numerais
-[0-9]+					{ return new Token(Token.NUM, yytext(), yyline, yycolumn) }
+[0-9]+					{ return new Token(Token.NUM, yytext(), yyline, yycolumn); }
 
 // Identificadores e numerais devem ser retornados com
 // return new Token(Token.ID, yytext(), yyline, yycolumn)
@@ -106,4 +103,28 @@ import java.io.IOException;
 .            { throw new RuntimeException("erro léxico, linha: " + 
                (yyline+1) + ", coluna : " + (yycolumn+1) + ", char: " + 
                yytext()); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
