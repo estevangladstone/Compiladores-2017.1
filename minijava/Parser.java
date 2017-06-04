@@ -1,4 +1,4 @@
-// Output created by jacc on Sun Jun 04 17:10:56 BRT 2017
+// Output created by jacc on Sun Jun 04 17:31:50 BRT 2017
 
 package minijava;
 
@@ -340,7 +340,7 @@ class Parser implements Tokens {
                     }
                 case 170:
                     switch (yytok) {
-                        case ATTRIB:
+                        case '=':
                             yyn = 23;
                             continue;
                         case '[':
@@ -534,8 +534,8 @@ class Parser implements Tokens {
                     }
                 case 183:
                     switch (yytok) {
-                        case ENDINPUT:
                         case CLASS:
+                        case ENDINPUT:
                             yyn = yyr3();
                             continue;
                     }
@@ -1004,7 +1004,7 @@ class Parser implements Tokens {
                     }
                 case 219:
                     switch (yytok) {
-                        case ATTRIB:
+                        case '=':
                             yyn = 86;
                             continue;
                     }
@@ -1096,8 +1096,8 @@ class Parser implements Tokens {
                     }
                 case 223:
                     switch (yytok) {
-                        case ENDINPUT:
                         case CLASS:
+                        case ENDINPUT:
                             yyn = yyr2();
                             continue;
                     }
@@ -1454,11 +1454,11 @@ class Parser implements Tokens {
                     }
                 case 251:
                     switch (yytok) {
-                        case BOOLEAN:
                         case '}':
                         case INT:
                         case PUBLIC:
                         case ID:
+                        case BOOLEAN:
                             yyn = yyr7();
                             continue;
                     }
@@ -1618,11 +1618,11 @@ class Parser implements Tokens {
                     }
                 case 262:
                     switch (yytok) {
-                        case BOOLEAN:
                         case '}':
                         case INT:
                         case PUBLIC:
                         case ID:
+                        case BOOLEAN:
                             yyn = yyr7();
                             continue;
                     }
@@ -1809,8 +1809,8 @@ class Parser implements Tokens {
                     }
                 case 273:
                     switch (yytok) {
-                        case ENDINPUT:
                         case CLASS:
+                        case ENDINPUT:
                             yyn = yyr5();
                             continue;
                     }
@@ -1926,8 +1926,8 @@ class Parser implements Tokens {
                     }
                 case 280:
                     switch (yytok) {
-                        case ENDINPUT:
                         case CLASS:
+                        case ENDINPUT:
                             yyn = yyr4();
                             continue;
                     }
@@ -2191,7 +2191,7 @@ class Parser implements Tokens {
                     }
                 case 296:
                     switch (yytok) {
-                        case ATTRIB:
+                        case '=':
                             yyn = 23;
                             continue;
                         case '[':
@@ -2557,17 +2557,17 @@ class Parser implements Tokens {
                 return 59;
             case '[':
                 return 60;
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr45();
         }
@@ -2576,17 +2576,17 @@ class Parser implements Tokens {
 
     private int yys33() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr39();
         }
@@ -2595,11 +2595,12 @@ class Parser implements Tokens {
 
     private int yys34() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -2607,7 +2608,6 @@ class Parser implements Tokens {
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr46();
         }
@@ -2616,17 +2616,17 @@ class Parser implements Tokens {
 
     private int yys36() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr41();
         }
@@ -2635,17 +2635,17 @@ class Parser implements Tokens {
 
     private int yys37() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr40();
         }
@@ -2654,11 +2654,12 @@ class Parser implements Tokens {
 
     private int yys38() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -2666,7 +2667,6 @@ class Parser implements Tokens {
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr47();
         }
@@ -2675,17 +2675,17 @@ class Parser implements Tokens {
 
     private int yys39() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr38();
         }
@@ -2872,10 +2872,10 @@ class Parser implements Tokens {
             case '}':
             case '{':
             case RETURN:
-            case IF:
-            case ELSE:
             case PRINTLN:
+            case IF:
             case ID:
+            case ELSE:
                 return yyr21();
         }
         return 309;
@@ -3069,10 +3069,10 @@ class Parser implements Tokens {
             case '}':
             case '{':
             case RETURN:
-            case IF:
-            case ELSE:
             case PRINTLN:
+            case IF:
             case ID:
+            case ELSE:
                 return yyr26();
         }
         return 309;
@@ -3245,8 +3245,8 @@ class Parser implements Tokens {
                 return 56;
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case ',':
@@ -3283,17 +3283,17 @@ class Parser implements Tokens {
 
     private int yys75() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr30();
         }
@@ -3308,8 +3308,8 @@ class Parser implements Tokens {
                 return 56;
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '-':
@@ -3329,8 +3329,8 @@ class Parser implements Tokens {
                 return 56;
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '-':
@@ -3344,17 +3344,17 @@ class Parser implements Tokens {
 
     private int yys78() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr31();
         }
@@ -3373,8 +3373,8 @@ class Parser implements Tokens {
                 return 56;
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case ',':
@@ -3388,11 +3388,12 @@ class Parser implements Tokens {
         switch (yytok) {
             case '(':
                 return 91;
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3400,7 +3401,6 @@ class Parser implements Tokens {
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr50();
         }
@@ -3409,17 +3409,17 @@ class Parser implements Tokens {
 
     private int yys81() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr43();
         }
@@ -3478,11 +3478,12 @@ class Parser implements Tokens {
 
     private int yys85() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3490,7 +3491,6 @@ class Parser implements Tokens {
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr49();
         }
@@ -3531,8 +3531,8 @@ class Parser implements Tokens {
             case '}':
             case '{':
             case RETURN:
-            case IF:
             case PRINTLN:
+            case IF:
             case ID:
                 return yyr22();
         }
@@ -3545,10 +3545,10 @@ class Parser implements Tokens {
             case '}':
             case '{':
             case RETURN:
-            case IF:
-            case ELSE:
             case PRINTLN:
+            case IF:
             case ID:
+            case ELSE:
                 return yyr25();
         }
         return 309;
@@ -3560,10 +3560,10 @@ class Parser implements Tokens {
             case '}':
             case '{':
             case RETURN:
-            case IF:
-            case ELSE:
             case PRINTLN:
+            case IF:
             case ID:
+            case ELSE:
                 return yyr24();
         }
         return 309;
@@ -3599,17 +3599,17 @@ class Parser implements Tokens {
 
     private int yys92() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr44();
         }
@@ -3618,11 +3618,12 @@ class Parser implements Tokens {
 
     private int yys93() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3630,7 +3631,6 @@ class Parser implements Tokens {
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr48();
         }
@@ -3712,11 +3712,12 @@ class Parser implements Tokens {
 
     private int yys101() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3724,7 +3725,6 @@ class Parser implements Tokens {
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr52();
         }
@@ -3733,17 +3733,17 @@ class Parser implements Tokens {
 
     private int yys102() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
+            case EQ:
             case '<':
             case ';':
             case '/':
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr42();
         }
@@ -3756,10 +3756,10 @@ class Parser implements Tokens {
             case '}':
             case '{':
             case RETURN:
-            case IF:
-            case ELSE:
             case PRINTLN:
+            case IF:
             case ID:
+            case ELSE:
                 return yyr27();
         }
         return 309;
@@ -3771,10 +3771,10 @@ class Parser implements Tokens {
             case '}':
             case '{':
             case RETURN:
-            case IF:
-            case ELSE:
             case PRINTLN:
+            case IF:
             case ID:
+            case ELSE:
                 return yyr23();
         }
         return 309;
@@ -3782,11 +3782,12 @@ class Parser implements Tokens {
 
     private int yys107() {
         switch (yytok) {
+            case '*':
             case ')':
             case NEQ:
-            case EQ:
             case ']':
             case '[':
+            case EQ:
             case '<':
             case ';':
             case '/':
@@ -3794,7 +3795,6 @@ class Parser implements Tokens {
             case '-':
             case ',':
             case '+':
-            case '*':
             case AND:
                 return yyr51();
         }
@@ -3830,15 +3830,15 @@ class Parser implements Tokens {
     private int yys112() {
         switch (yytok) {
             case WHILE:
-            case BOOLEAN:
-            case '}':
-            case INT:
             case '{':
             case RETURN:
+            case INT:
             case PUBLIC:
-            case IF:
             case PRINTLN:
+            case IF:
+            case '}':
             case ID:
+            case BOOLEAN:
                 return yyr6();
         }
         return 309;
@@ -3872,15 +3872,15 @@ class Parser implements Tokens {
     private int yys125() {
         switch (yytok) {
             case WHILE:
-            case BOOLEAN:
-            case '}':
-            case INT:
             case '{':
             case RETURN:
+            case INT:
             case PUBLIC:
-            case IF:
             case PRINTLN:
+            case IF:
+            case '}':
             case ID:
+            case BOOLEAN:
                 return yyr8();
         }
         return 309;
@@ -3889,13 +3889,13 @@ class Parser implements Tokens {
     private int yys136() {
         switch (yytok) {
             case WHILE:
-            case BOOLEAN:
-            case INT:
             case '{':
             case RETURN:
-            case IF:
+            case INT:
             case PRINTLN:
+            case IF:
             case ID:
+            case BOOLEAN:
                 return yyr7();
         }
         return 309;
@@ -3904,13 +3904,13 @@ class Parser implements Tokens {
     private int yys137() {
         switch (yytok) {
             case WHILE:
-            case BOOLEAN:
-            case INT:
             case '{':
             case RETURN:
-            case IF:
+            case INT:
             case PRINTLN:
+            case IF:
             case ID:
+            case BOOLEAN:
                 return yyr7();
         }
         return 309;
@@ -4091,7 +4091,7 @@ class Parser implements Tokens {
     }
 
     private int yyr23() { // cmd : IF '(' exp ')' cmd ELSE cmd
-        { yyrv = new If(((Exp)yysv[yysp-5]), ((Cmd)yysv[yysp-3]), ((Token)yysv[yysp-2]), ((Token)yysv[yysp-6]).lin); }
+        { yyrv = new If(((Exp)yysv[yysp-5]), ((Cmd)yysv[yysp-3]), ((Cmd)yysv[yysp-1]), ((Token)yysv[yysp-6]).lin); }
         yysv[yysp-=7] = yyrv;
         return yypcmd();
     }
@@ -4108,13 +4108,13 @@ class Parser implements Tokens {
         return yypcmd();
     }
 
-    private int yyr26() { // cmd : ID ATTRIB exp ';'
+    private int yyr26() { // cmd : ID '=' exp ';'
         { yyrv = new Atrib(((Token)yysv[yysp-4]).texto, ((Exp)yysv[yysp-2]), ((Token)yysv[yysp-3]).lin); }
         yysv[yysp-=4] = yyrv;
         return yypcmd();
     }
 
-    private int yyr27() { // cmd : ID '[' exp ']' ATTRIB exp ';'
+    private int yyr27() { // cmd : ID '[' exp ']' '=' exp ';'
         { yyrv = new AtribVetor(((Token)yysv[yysp-7]).texto, ((Exp)yysv[yysp-5]), ((Exp)yysv[yysp-2]), ((Token)yysv[yysp-6]).lin); }
         yysv[yysp-=7] = yyrv;
         return yypcmd();

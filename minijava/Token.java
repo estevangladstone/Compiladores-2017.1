@@ -11,9 +11,9 @@ public class Token implements Tokens {
 	public final static String[] nomes = new String[] {
 		"<<EOF>>", "&&",
 		"boolean", "class", "else", "==", "extends", "false",
-		"id", "if", "int", "length", "main", "-", "!=", "new",
+		"id", "if", "int", "length", "main", "-", "!=", "new", "null",
 		"num", "System.out.println", "public", "return", "static",
-		"String", "this", "text" , "true", "void", "while" , "NULL"
+		"String", "this", "text" , "true", "void", "while"
 	};
 	
 	public Token(int tipo, String texto, int lin, int col) {
