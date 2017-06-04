@@ -20,11 +20,11 @@ import java.io.IOException;
 *
 */
 
-%class Scanner          // nome da classe do analisador
+%class Scanner		   	// nome da classe do analisador
 %public                 // classe deve ser pública
 %line                   // guarde número da linha em yyline
 %column                 // guarde número da coluna em yycolumn
-%function nextToken     // nome do método que vai fornecer um token
+%function getNextToken  // nome do método que vai fornecer um token
 %type Token             // classe usado para tokens
 
 // Código Java entre %{ e %} é copiado pro corpo da classe
@@ -38,12 +38,12 @@ import java.io.IOException;
 		yyreset(new StringReader(input));
 	}
 	
-	public List<Token> tokens() throws IOException {
+	public List<Token> getTokens() throws IOException {
 		List<Token> tokens = new ArrayList<Token>();
-		Token tok = nextToken();
+		Token tok = getNextToken();
 		while(tok.tipo != Token.EOF) {
 			tokens.add(tok);
-			tok = nextToken();
+			tok = getNextToken();
 		}
 		tokens.add(tok);
 		return tokens;
@@ -83,7 +83,12 @@ import java.io.IOException;
 "false"      			{ return new Token(Token.FALSE, yyline, yycolumn); }
 "this"      			{ return new Token(Token.THIS, yyline, yycolumn); }
 "new"      				{ return new Token(Token.NEW, yyline, yycolumn); }
-"null"      			{ return new Token(Token.NULL, yyline, yycolumn); }
+"NULL"      			{ return new Token(Token.NULL, yyline, yycolumn); }
+[a-zA-Z][a-zA-Z0-9_]*	{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
+[0-9]+					{ return new Token(Token.NUM, yytext(), yyline, yycolumn); }
+[+]|[-]|;|[(]|[)]|[=] 	{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
+["][!"]*["]				{ return new Token(Token.TEXT, yytext(), yyline, yycolumn); }
+
 
 
 // Identificadores e numerais devem ser retornados com

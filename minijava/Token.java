@@ -13,7 +13,7 @@ public class Token implements Tokens {
 		"boolean", "class", "else", "==", "extends", "false",
 		"id", "if", "int", "length", "main", "-", "!=", "new",
 		"num", "System.out.println", "public", "return", "static",
-		"String", "this", "true", "void", "while"
+		"String", "this", "text" , "true", "void", "while" , "NULL"
 	};
 	
 	public Token(int tipo, String texto, int lin, int col) {
