@@ -62,7 +62,8 @@ import java.io.IOException;
 
 
 //COMENTARIOS SAO IGNORADOS
-[/][/]~\n			{ }
+[/][/]~\n				{ }
+[*/]~[*/]				{ }
 
 // Espaços são ignorados
 [ \r\n\t\f]    			{ }
@@ -90,7 +91,10 @@ import java.io.IOException;
 "NULL"      			{ return new Token(Token.NULL, yyline, yycolumn); }
 
 // Caracteres reservados
-[+]|[-]|[*]|[;]|[(]|[)]|[=]|[{]|[}]|"["|"]"|"."|[<]|[>]	{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
+"+"|"-"|"*"|";"|"("|")"|"="	{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
+"{"|"}"|"["|"]"				{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
+"."|","|"!"|"&&"|"<"|">"	{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
+"=="|"!="|"/"				{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
 
 // Identificadores
 [a-zA-Z][a-zA-Z0-9_]*	{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
