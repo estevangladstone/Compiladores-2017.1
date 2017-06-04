@@ -1,4 +1,4 @@
-// Output created by jacc on Sun Jun 04 17:31:50 BRT 2017
+// Output created by jacc on Sun Jun 04 17:46:18 BRT 2017
 
 package minijava;
 
@@ -4475,7 +4475,7 @@ public Parser(java.io.Reader entrada) {
 
 int proximo() {
   try {
-    token = scan.nextToken();
+    token = scan.getNextToken();
     tipo = token.tipo;
     return tipo;
   } catch(java.io.IOException e) {
