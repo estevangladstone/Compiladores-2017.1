@@ -31,6 +31,11 @@ import minijava.ast.*;
 
 /* TODO: classes de prioridade */
 
+%left '<' '==' '!='
+%left '+' '-'
+%left '*' '/'
+%left '&&' '!'
+
 %%
 
 prog : CLASS ID '{' PUBLIC STATIC VOID MAIN '(' STRING '[' ']' ID ')' '{' cmd '}' '}'
@@ -55,7 +60,7 @@ var : tipo ID ';'  { $$ = new Var($1, $2.texto, $2.lin); }
 
 /* TODO: não-terminal metodos, lista de 0 ou mais métodos, regra {METODO} */
 
-metodos : metodo metodos  	{ $2.add(0, $1); $$ = $2; } 
+metodos : metodos metodo  	{ $1.add(0, $2); $$ = $1; } 
      	|          			{ $$ = new java.util.ArrayList<Metodo>(); }
      	;
 
@@ -85,12 +90,13 @@ cmds : cmd cmds  { $2.add(0, $1); $$ = $2; }
    da AST */
 
 // FEITO...?
-cmd : IF '(' exp ')' cmd 			{ $$ = new If($3, $5, $2.lin); }
+cmd : '{' cmds '}' 					{ $$ = new Bloco(); }
+	| IF '(' exp ')' cmd 			{ $$ = new If($3, $5, $2.lin); }
 	| IF '(' exp ')' cmd ELSE cmd	{ $$ = new If($3, $5, $6, $2.lin); }
 	| WHILE '(' exp ')' cmd			{ $$ = new While($3, $5, $2.lin); }
 	| PRINTLN '(' exp ')' ';'		{ $$ = new Println($3, $2.lin); }
 	| ID ATTRIB exp ';'				{ $$ = new Atrib($1.texto, $3, $2.lin); }
-	| ID '[' exp ']' ATTRIB exp ';'	{ $$ = new Atrib(new Indexa($1, $3, $2.lin), $5, $2.lin); }
+	| ID '[' exp ']' ATTRIB exp ';'	{ $$ = new AtribVetor($1.texto, $3, $6, $2.lin); }
 	;
 
 exp : exp '+' exp  { $$ = new Soma($1, $3, $2.lin); }
