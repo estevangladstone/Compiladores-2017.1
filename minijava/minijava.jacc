@@ -8,10 +8,10 @@ import minijava.ast.*;
 %}
 
 %token <Token> BOOLEAN CLASS EXTENDS PUBLIC STATIC
-%token <Token> VOID MAIN STRING RETURN INT ELSE
+%token <Token> VOID MAIN STRING RETURN INT ELSE ATTRIB
 %token <Token> PRINTLN LENGTH TRUE FALSE THIS NULL
-%token <Token> NEW EQ NEQ AND '/' '*' '<' '!' '['
-%token <Token> ID NUM IF WHILE '.' '=' '+' '-' 
+%token <Token> NEW EQ NEQ AND '/' '*' '<' '!' '[' ']' NEG 
+%token <Token> ID NUM IF WHILE '.' '=' '+' '-' '(' ')' '{' '}'
 
 %next proximo()
 %get tipo
@@ -31,10 +31,11 @@ import minijava.ast.*;
 
 /* TODO: classes de prioridade */
 
-%left '<' '==' '!='
+%left NEG
+%left AND NEQ
+%left '<' EQ
 %left '+' '-'
 %left '*' '/'
-%left '&&' '!'
 
 %%
 
@@ -50,6 +51,7 @@ classes : classes classe   { $1.add($2); $$ = $1; }
 
 classe : CLASS ID EXTENDS ID '{' vars metodos '}'	{ $$ = new Classe($2.texto, $4.texto, $6, $7, $5.lin); }
 	   | CLASS ID '{' vars metodos '}'				{ $$ = new Classe($2.texto, $4, $5, $3.lin); }
+       ;
 
 vars : vars var   { $1.add($2); $$ = $1; }
      |            { $$ = new java.util.ArrayList<Var>(); }
@@ -90,7 +92,7 @@ cmds : cmd cmds  { $2.add(0, $1); $$ = $2; }
    da AST */
 
 // FEITO...?
-cmd : '{' cmds '}' 					{ $$ = new Bloco(); }
+cmd : '{' cmds '}' 					{ $$ = new Bloco($2); }
 	| IF '(' exp ')' cmd 			{ $$ = new If($3, $5, $2.lin); }
 	| IF '(' exp ')' cmd ELSE cmd	{ $$ = new If($3, $5, $6, $2.lin); }
 	| WHILE '(' exp ')' cmd			{ $$ = new While($3, $5, $2.lin); }

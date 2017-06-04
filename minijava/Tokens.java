@@ -1,36 +1,37 @@
-// Output created by jacc on Sun Jun 09 13:11:15 BRT 2013
+// Output created by jacc on Sun Jun 04 17:10:56 BRT 2017
 
 package minijava;
 
 interface Tokens {
-    int ENDINPUT = 0;//
+    int ENDINPUT = 0;
     int AND = 1;
-    int BOOLEAN = 2;//
-    int CLASS = 3;//
-    int ELSE = 4;//
-    int EQ = 5;
-    int EXTENDS = 6;//
-    int FALSE = 7;//
-    int ID = 8;//
-    int IF = 9;//
-    int INT = 10;//
-    int LENGTH = 11;//
-    int MAIN = 12;//
-    int NEG = 13;
-    int NEQ = 14;
-    int NEW = 15;//
-    int NUM = 16;//
-    int PRINTLN = 17;//
-    int PUBLIC = 18;//
-    int RETURN = 19;//
-    int STATIC = 20;//
-    int STRING = 21;//
-    int THIS = 22;//
-    int TEXT = 23;//
-    int TRUE = 24;//
-    int VOID = 25;//
-    int WHILE = 26;//
-    int NULL = 27;//
+    int ATTRIB = 2;
+    int BOOLEAN = 3;
+    int CLASS = 4;
+    int ELSE = 5;
+    int EQ = 6;
+    int EXTENDS = 7;
+    int FALSE = 8;
+    int ID = 9;
+    int IF = 10;
+    int INT = 11;
+    int LENGTH = 12;
+    int MAIN = 13;
+    int NEG = 14;
+    int NEQ = 15;
+    int NEW = 16;
+    int NULL = 17;
+    int NUM = 18;
+    int PRINTLN = 19;
+    int PUBLIC = 20;
+    int RETURN = 21;
+    int STATIC = 22;
+    int STRING = 23;
+    int THIS = 24;
+    int TRUE = 25;
+    int VOID = 26;
+    int WHILE = 27;
+    int error = 28;
     // '!' (code=33)
     // '(' (code=40)
     // ')' (code=41)
