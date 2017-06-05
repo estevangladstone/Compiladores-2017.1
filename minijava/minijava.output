@@ -1,4 +1,4 @@
-// Output created by jacc on Sun Jun 04 17:53:58 BRT 2017
+// Output created by jacc on Sun Jun 04 22:48:39 BRT 2017
 
 state 0 (entry on prog)
     $accept : _prog $end
@@ -119,8 +119,8 @@ state 17 (entry on ID)
     . error
 
 state 18 (entry on IF)
-    cmd : IF_'(' exp ')' cmd    (22)
-    cmd : IF_'(' exp ')' cmd ELSE cmd    (23)
+    cmd : IF_'(' exp ')' cmd ELSE cmd    (22)
+    cmd : IF_'(' exp ')' cmd    (23)
 
     '(' shift 25
     . error
@@ -195,8 +195,8 @@ state 24 (entry on '[')
     pexp goto 32
 
 state 25 (entry on '(')
-    cmd : IF '('_exp ')' cmd    (22)
-    cmd : IF '('_exp ')' cmd ELSE cmd    (23)
+    cmd : IF '('_exp ')' cmd ELSE cmd    (22)
+    cmd : IF '('_exp ')' cmd    (23)
 
     FALSE shift 33
     ID shift 34
@@ -518,8 +518,8 @@ state 43 (entry on exp)
     . error
 
 state 44 (entry on exp)
-    cmd : IF '(' exp_')' cmd    (22)
-    cmd : IF '(' exp_')' cmd ELSE cmd    (23)
+    cmd : IF '(' exp_')' cmd ELSE cmd    (22)
+    cmd : IF '(' exp_')' cmd    (23)
     exp : exp_'+' exp    (28)
     exp : exp_'-' exp    (29)
     exp : exp_'*' exp    (30)
@@ -877,18 +877,18 @@ state 65 (entry on exp)
     exp : exp_AND exp    (35)
     exp : '-' exp_    (36)
 
-    AND shift 50
-    EQ shift 51
-    NEQ shift 52
-    '*' shift 53
-    '+' shift 54
-    '-' shift 55
-    '/' shift 56
-    '<' shift 58
+    '*' reduce 36
     ')' reduce 36
+    NEQ reduce 36
     ']' reduce 36
+    EQ reduce 36
+    '<' reduce 36
     ';' reduce 36
+    '/' reduce 36
+    '-' reduce 36
     ',' reduce 36
+    '+' reduce 36
+    AND reduce 36
     . error
 
 state 66 (entry on ']')
@@ -898,8 +898,8 @@ state 66 (entry on ']')
     . error
 
 state 67 (entry on ')')
-    cmd : IF '(' exp ')'_cmd    (22)
-    cmd : IF '(' exp ')'_cmd ELSE cmd    (23)
+    cmd : IF '(' exp ')'_cmd ELSE cmd    (22)
+    cmd : IF '(' exp ')'_cmd    (23)
 
     ID shift 17
     IF shift 18
@@ -936,8 +936,8 @@ state 70 (entry on classe)
     . error
 
 state 71 (entry on CLASS)
-    classe : CLASS_ID EXTENDS ID '{' vars metodos '}'    (4)
-    classe : CLASS_ID '{' vars metodos '}'    (5)
+    classe : CLASS_ID '{' vars metodos '}'    (4)
+    classe : CLASS_ID EXTENDS ID '{' vars metodos '}'    (5)
 
     ID shift 90
     . error
@@ -954,13 +954,13 @@ state 72 (entry on exp)
     exp : exp AND exp_    (35)
 
     EQ shift 51
+    NEQ shift 52
     '*' shift 53
     '+' shift 54
     '-' shift 55
     '/' shift 56
     '<' shift 58
     ')' reduce 35
-    NEQ reduce 35
     ']' reduce 35
     ';' reduce 35
     ',' reduce 35
@@ -1003,15 +1003,15 @@ state 74 (entry on exp)
     exp : exp NEQ exp_    (34)
     exp : exp_AND exp    (35)
 
-    EQ shift 51
     '*' shift 53
     '+' shift 54
     '-' shift 55
     '/' shift 56
-    '<' shift 58
     ')' reduce 34
     NEQ reduce 34
     ']' reduce 34
+    EQ reduce 34
+    '<' reduce 34
     ';' reduce 34
     ',' reduce 34
     AND reduce 34
@@ -1264,19 +1264,19 @@ state 86 (entry on '=')
     exp goto 95
     pexp goto 32
 
-87: shift/reduce conflict (shift 96 and red'n 22) on ELSE
+87: shift/reduce conflict (shift 96 and red'n 23) on ELSE
 state 87 (entry on cmd)
-    cmd : IF '(' exp ')' cmd_    (22)
-    cmd : IF '(' exp ')' cmd_ELSE cmd    (23)
+    cmd : IF '(' exp ')' cmd_ELSE cmd    (22)
+    cmd : IF '(' exp ')' cmd_    (23)
 
     ELSE shift 96
-    WHILE reduce 22
-    '}' reduce 22
-    '{' reduce 22
-    RETURN reduce 22
-    PRINTLN reduce 22
-    IF reduce 22
-    ID reduce 22
+    WHILE reduce 23
+    '}' reduce 23
+    '{' reduce 23
+    RETURN reduce 23
+    PRINTLN reduce 23
+    IF reduce 23
+    ID reduce 23
     . error
 
 state 88 (entry on ';')
@@ -1306,8 +1306,8 @@ state 89 (entry on cmd)
     . error
 
 state 90 (entry on ID)
-    classe : CLASS ID_EXTENDS ID '{' vars metodos '}'    (4)
-    classe : CLASS ID_'{' vars metodos '}'    (5)
+    classe : CLASS ID_'{' vars metodos '}'    (4)
+    classe : CLASS ID_EXTENDS ID '{' vars metodos '}'    (5)
 
     EXTENDS shift 97
     '{' shift 98
@@ -1415,7 +1415,7 @@ state 95 (entry on exp)
     . error
 
 state 96 (entry on ELSE)
-    cmd : IF '(' exp ')' cmd ELSE_cmd    (23)
+    cmd : IF '(' exp ')' cmd ELSE_cmd    (22)
 
     ID shift 17
     IF shift 18
@@ -1427,13 +1427,13 @@ state 96 (entry on ELSE)
     cmd goto 104
 
 state 97 (entry on EXTENDS)
-    classe : CLASS ID EXTENDS_ID '{' vars metodos '}'    (4)
+    classe : CLASS ID EXTENDS_ID '{' vars metodos '}'    (5)
 
     ID shift 105
     . error
 
 state 98 (entry on '{')
-    classe : CLASS ID '{'_vars metodos '}'    (5)
+    classe : CLASS ID '{'_vars metodos '}'    (4)
     vars : _    (7)
 
     '}' reduce 7
@@ -1526,39 +1526,40 @@ state 103 (entry on ';')
     . error
 
 state 104 (entry on cmd)
-    cmd : IF '(' exp ')' cmd ELSE cmd_    (23)
+    cmd : IF '(' exp ')' cmd ELSE cmd_    (22)
 
-    WHILE reduce 23
-    '}' reduce 23
-    '{' reduce 23
-    RETURN reduce 23
-    PRINTLN reduce 23
-    IF reduce 23
-    ID reduce 23
-    ELSE reduce 23
+    WHILE reduce 22
+    '}' reduce 22
+    '{' reduce 22
+    RETURN reduce 22
+    PRINTLN reduce 22
+    IF reduce 22
+    ID reduce 22
+    ELSE reduce 22
     . error
 
 state 105 (entry on ID)
-    classe : CLASS ID EXTENDS ID_'{' vars metodos '}'    (4)
+    classe : CLASS ID EXTENDS ID_'{' vars metodos '}'    (5)
 
     '{' shift 109
     . error
 
 state 106 (entry on vars)
     metodos : _    (10)
-    classe : CLASS ID '{' vars_metodos '}'    (5)
+    classe : CLASS ID '{' vars_metodos '}'    (4)
     vars : vars_var    (6)
 
-    BOOLEAN shift 113
-    ID shift 114
-    INT shift 115
+    BOOLEAN shift 114
+    ID shift 115
+    INT shift 116
+    PUBLIC shift 117
     '}' reduce 10
-    PUBLIC reduce 10
     . error
 
-    metodos goto 110
-    tipo goto 111
-    var goto 112
+    metodo goto 110
+    metodos goto 111
+    tipo goto 112
+    var goto 113
 
 state 107 (entry on ')')
     pexp : pexp '.' ID '(' exps ')'_    (51)
@@ -1594,11 +1595,11 @@ state 108 (entry on ',')
     '-' shift 42
     . error
 
-    exp goto 116
+    exp goto 118
     pexp goto 32
 
 state 109 (entry on '{')
-    classe : CLASS ID EXTENDS ID '{'_vars metodos '}'    (4)
+    classe : CLASS ID EXTENDS ID '{'_vars metodos '}'    (5)
     vars : _    (7)
 
     '}' reduce 7
@@ -1608,25 +1609,32 @@ state 109 (entry on '{')
     BOOLEAN reduce 7
     . error
 
-    vars goto 117
+    vars goto 119
 
-state 110 (entry on metodos)
-    metodos : metodos_metodo    (9)
-    classe : CLASS ID '{' vars metodos_'}'    (5)
+state 110 (entry on metodo)
+    metodos : metodo_metodos    (9)
+    metodos : _    (10)
 
-    PUBLIC shift 119
-    '}' shift 120
+    PUBLIC shift 117
+    '}' reduce 10
     . error
 
-    metodo goto 118
+    metodo goto 110
+    metodos goto 120
 
-state 111 (entry on tipo)
+state 111 (entry on metodos)
+    classe : CLASS ID '{' vars metodos_'}'    (4)
+
+    '}' shift 121
+    . error
+
+state 112 (entry on tipo)
     var : tipo_ID ';'    (8)
 
-    ID shift 121
+    ID shift 122
     . error
 
-state 112 (entry on var)
+state 113 (entry on var)
     vars : vars var_    (6)
 
     WHILE reduce 6
@@ -1641,27 +1649,38 @@ state 112 (entry on var)
     BOOLEAN reduce 6
     . error
 
-state 113 (entry on BOOLEAN)
+state 114 (entry on BOOLEAN)
     tipo : BOOLEAN_    (16)
 
     ID reduce 16
     . error
 
-state 114 (entry on ID)
+state 115 (entry on ID)
     tipo : ID_    (18)
 
     ID reduce 18
     . error
 
-state 115 (entry on INT)
+state 116 (entry on INT)
     tipo : INT_'[' ']'    (15)
     tipo : INT_    (17)
 
-    '[' shift 122
+    '[' shift 123
     ID reduce 17
     . error
 
-state 116 (entry on exp)
+state 117 (entry on PUBLIC)
+    metodo : PUBLIC_tipo ID '(' ')' '{' vars cmds RETURN exp ';' '}'    (11)
+    metodo : PUBLIC_tipo ID '(' params ')' '{' vars cmds RETURN exp ';' '}'    (12)
+
+    BOOLEAN shift 114
+    ID shift 115
+    INT shift 116
+    . error
+
+    tipo goto 124
+
+state 118 (entry on exp)
     exp : exp_'+' exp    (28)
     exp : exp_'-' exp    (29)
     exp : exp_'*' exp    (30)
@@ -1684,68 +1703,47 @@ state 116 (entry on exp)
     ',' reduce 53
     . error
 
-state 117 (entry on vars)
+state 119 (entry on vars)
     metodos : _    (10)
-    classe : CLASS ID EXTENDS ID '{' vars_metodos '}'    (4)
+    classe : CLASS ID EXTENDS ID '{' vars_metodos '}'    (5)
     vars : vars_var    (6)
 
-    BOOLEAN shift 113
-    ID shift 114
-    INT shift 115
+    BOOLEAN shift 114
+    ID shift 115
+    INT shift 116
+    PUBLIC shift 117
     '}' reduce 10
-    PUBLIC reduce 10
     . error
 
-    metodos goto 123
-    tipo goto 111
-    var goto 112
+    metodo goto 110
+    metodos goto 125
+    tipo goto 112
+    var goto 113
 
-state 118 (entry on metodo)
-    metodos : metodos metodo_    (9)
+state 120 (entry on metodos)
+    metodos : metodo metodos_    (9)
 
     '}' reduce 9
-    PUBLIC reduce 9
     . error
 
-state 119 (entry on PUBLIC)
-    metodo : PUBLIC_tipo ID '(' ')' '{' vars cmds RETURN exp ';' '}'    (11)
-    metodo : PUBLIC_tipo ID '(' params ')' '{' vars cmds RETURN exp ';' '}'    (12)
+state 121 (entry on '}')
+    classe : CLASS ID '{' vars metodos '}'_    (4)
 
-    BOOLEAN shift 113
-    ID shift 114
-    INT shift 115
+    CLASS reduce 4
+    $end reduce 4
     . error
 
-    tipo goto 124
-
-state 120 (entry on '}')
-    classe : CLASS ID '{' vars metodos '}'_    (5)
-
-    CLASS reduce 5
-    $end reduce 5
-    . error
-
-state 121 (entry on ID)
+state 122 (entry on ID)
     var : tipo ID_';'    (8)
 
-    ';' shift 125
+    ';' shift 126
     . error
 
-state 122 (entry on '[')
+state 123 (entry on '[')
     tipo : INT '['_']'    (15)
 
-    ']' shift 126
+    ']' shift 127
     . error
-
-state 123 (entry on metodos)
-    metodos : metodos_metodo    (9)
-    classe : CLASS ID EXTENDS ID '{' vars metodos_'}'    (4)
-
-    PUBLIC shift 119
-    '}' shift 127
-    . error
-
-    metodo goto 118
 
 state 124 (entry on tipo)
     metodo : PUBLIC tipo_ID '(' ')' '{' vars cmds RETURN exp ';' '}'    (11)
@@ -1754,7 +1752,13 @@ state 124 (entry on tipo)
     ID shift 128
     . error
 
-state 125 (entry on ';')
+state 125 (entry on metodos)
+    classe : CLASS ID EXTENDS ID '{' vars metodos_'}'    (5)
+
+    '}' shift 129
+    . error
+
+state 126 (entry on ';')
     var : tipo ID ';'_    (8)
 
     WHILE reduce 8
@@ -1769,100 +1773,84 @@ state 125 (entry on ';')
     BOOLEAN reduce 8
     . error
 
-state 126 (entry on ']')
+state 127 (entry on ']')
     tipo : INT '[' ']'_    (15)
 
     ID reduce 15
-    . error
-
-state 127 (entry on '}')
-    classe : CLASS ID EXTENDS ID '{' vars metodos '}'_    (4)
-
-    CLASS reduce 4
-    $end reduce 4
     . error
 
 state 128 (entry on ID)
     metodo : PUBLIC tipo ID_'(' ')' '{' vars cmds RETURN exp ';' '}'    (11)
     metodo : PUBLIC tipo ID_'(' params ')' '{' vars cmds RETURN exp ';' '}'    (12)
 
-    '(' shift 129
+    '(' shift 130
     . error
 
-state 129 (entry on '(')
+state 129 (entry on '}')
+    classe : CLASS ID EXTENDS ID '{' vars metodos '}'_    (5)
+
+    CLASS reduce 5
+    $end reduce 5
+    . error
+
+state 130 (entry on '(')
     metodo : PUBLIC tipo ID '('_')' '{' vars cmds RETURN exp ';' '}'    (11)
     metodo : PUBLIC tipo ID '('_params ')' '{' vars cmds RETURN exp ';' '}'    (12)
 
-    BOOLEAN shift 113
-    ID shift 114
-    INT shift 115
-    ')' shift 132
+    BOOLEAN shift 114
+    ID shift 115
+    INT shift 116
+    ')' shift 133
     . error
 
-    params goto 130
-    tipo goto 131
+    params goto 131
+    tipo goto 132
 
-state 130 (entry on params)
+state 131 (entry on params)
     metodo : PUBLIC tipo ID '(' params_')' '{' vars cmds RETURN exp ';' '}'    (12)
     params : params_',' tipo ID    (13)
 
-    ')' shift 133
-    ',' shift 134
+    ')' shift 134
+    ',' shift 135
     . error
 
-state 131 (entry on tipo)
+state 132 (entry on tipo)
     params : tipo_ID    (14)
 
-    ID shift 135
-    . error
-
-state 132 (entry on ')')
-    metodo : PUBLIC tipo ID '(' ')'_'{' vars cmds RETURN exp ';' '}'    (11)
-
-    '{' shift 136
+    ID shift 136
     . error
 
 state 133 (entry on ')')
-    metodo : PUBLIC tipo ID '(' params ')'_'{' vars cmds RETURN exp ';' '}'    (12)
+    metodo : PUBLIC tipo ID '(' ')'_'{' vars cmds RETURN exp ';' '}'    (11)
 
     '{' shift 137
     . error
 
-state 134 (entry on ',')
-    params : params ','_tipo ID    (13)
+state 134 (entry on ')')
+    metodo : PUBLIC tipo ID '(' params ')'_'{' vars cmds RETURN exp ';' '}'    (12)
 
-    BOOLEAN shift 113
-    ID shift 114
-    INT shift 115
+    '{' shift 138
     . error
 
-    tipo goto 138
+state 135 (entry on ',')
+    params : params ','_tipo ID    (13)
 
-state 135 (entry on ID)
+    BOOLEAN shift 114
+    ID shift 115
+    INT shift 116
+    . error
+
+    tipo goto 139
+
+state 136 (entry on ID)
     params : tipo ID_    (14)
 
     ')' reduce 14
     ',' reduce 14
     . error
 
-state 136 (entry on '{')
-    metodo : PUBLIC tipo ID '(' ')' '{'_vars cmds RETURN exp ';' '}'    (11)
-    vars : _    (7)
-
-    WHILE reduce 7
-    '{' reduce 7
-    RETURN reduce 7
-    INT reduce 7
-    PRINTLN reduce 7
-    IF reduce 7
-    ID reduce 7
-    BOOLEAN reduce 7
-    . error
-
-    vars goto 139
-
 state 137 (entry on '{')
-    metodo : PUBLIC tipo ID '(' params ')' '{'_vars cmds RETURN exp ';' '}'    (12)
+    metodo : PUBLIC tipo ID '(' ')' '{'_vars cmds RETURN exp ';' '}'    (11)
     vars : _    (7)
 
     WHILE reduce 7
@@ -1877,13 +1865,29 @@ state 137 (entry on '{')
 
     vars goto 140
 
-state 138 (entry on tipo)
-    params : params ',' tipo_ID    (13)
+state 138 (entry on '{')
+    metodo : PUBLIC tipo ID '(' params ')' '{'_vars cmds RETURN exp ';' '}'    (12)
+    vars : _    (7)
 
-    ID shift 141
+    WHILE reduce 7
+    '{' reduce 7
+    RETURN reduce 7
+    INT reduce 7
+    PRINTLN reduce 7
+    IF reduce 7
+    ID reduce 7
+    BOOLEAN reduce 7
     . error
 
-state 139 (entry on vars)
+    vars goto 141
+
+state 139 (entry on tipo)
+    params : params ',' tipo_ID    (13)
+
+    ID shift 142
+    . error
+
+state 140 (entry on vars)
     cmds : _    (20)
     metodo : PUBLIC tipo ID '(' ')' '{' vars_cmds RETURN exp ';' '}'    (11)
     vars : vars_var    (6)
@@ -1892,18 +1896,18 @@ state 139 (entry on vars)
     PRINTLN shift 19
     WHILE shift 20
     '{' shift 21
-    BOOLEAN shift 113
-    INT shift 115
-    ID shift 143
+    BOOLEAN shift 114
+    INT shift 116
+    ID shift 144
     RETURN reduce 20
     . error
 
     cmd goto 28
-    cmds goto 142
-    tipo goto 111
-    var goto 112
+    cmds goto 143
+    tipo goto 112
+    var goto 113
 
-state 140 (entry on vars)
+state 141 (entry on vars)
     cmds : _    (20)
     metodo : PUBLIC tipo ID '(' params ')' '{' vars_cmds RETURN exp ';' '}'    (12)
     vars : vars_var    (6)
@@ -1912,31 +1916,31 @@ state 140 (entry on vars)
     PRINTLN shift 19
     WHILE shift 20
     '{' shift 21
-    BOOLEAN shift 113
-    INT shift 115
-    ID shift 143
+    BOOLEAN shift 114
+    INT shift 116
+    ID shift 144
     RETURN reduce 20
     . error
 
     cmd goto 28
-    cmds goto 144
-    tipo goto 111
-    var goto 112
+    cmds goto 145
+    tipo goto 112
+    var goto 113
 
-state 141 (entry on ID)
+state 142 (entry on ID)
     params : params ',' tipo ID_    (13)
 
     ')' reduce 13
     ',' reduce 13
     . error
 
-state 142 (entry on cmds)
+state 143 (entry on cmds)
     metodo : PUBLIC tipo ID '(' ')' '{' vars cmds_RETURN exp ';' '}'    (11)
 
-    RETURN shift 145
+    RETURN shift 146
     . error
 
-state 143 (entry on ID)
+state 144 (entry on ID)
     cmd : ID_'=' exp ';'    (26)
     cmd : ID_'[' exp ']' '=' exp ';'    (27)
     tipo : ID_    (18)
@@ -1946,32 +1950,14 @@ state 143 (entry on ID)
     ID reduce 18
     . error
 
-state 144 (entry on cmds)
+state 145 (entry on cmds)
     metodo : PUBLIC tipo ID '(' params ')' '{' vars cmds_RETURN exp ';' '}'    (12)
 
-    RETURN shift 146
+    RETURN shift 147
     . error
-
-state 145 (entry on RETURN)
-    metodo : PUBLIC tipo ID '(' ')' '{' vars cmds RETURN_exp ';' '}'    (11)
-
-    FALSE shift 33
-    ID shift 34
-    NEW shift 35
-    NULL shift 36
-    NUM shift 37
-    THIS shift 38
-    TRUE shift 39
-    '!' shift 40
-    '(' shift 41
-    '-' shift 42
-    . error
-
-    exp goto 147
-    pexp goto 32
 
 state 146 (entry on RETURN)
-    metodo : PUBLIC tipo ID '(' params ')' '{' vars cmds RETURN_exp ';' '}'    (12)
+    metodo : PUBLIC tipo ID '(' ')' '{' vars cmds RETURN_exp ';' '}'    (11)
 
     FALSE shift 33
     ID shift 34
@@ -1988,7 +1974,25 @@ state 146 (entry on RETURN)
     exp goto 148
     pexp goto 32
 
-state 147 (entry on exp)
+state 147 (entry on RETURN)
+    metodo : PUBLIC tipo ID '(' params ')' '{' vars cmds RETURN_exp ';' '}'    (12)
+
+    FALSE shift 33
+    ID shift 34
+    NEW shift 35
+    NULL shift 36
+    NUM shift 37
+    THIS shift 38
+    TRUE shift 39
+    '!' shift 40
+    '(' shift 41
+    '-' shift 42
+    . error
+
+    exp goto 149
+    pexp goto 32
+
+state 148 (entry on exp)
     exp : exp_'+' exp    (28)
     exp : exp_'-' exp    (29)
     exp : exp_'*' exp    (30)
@@ -2007,10 +2011,10 @@ state 147 (entry on exp)
     '-' shift 55
     '/' shift 56
     '<' shift 58
-    ';' shift 149
+    ';' shift 150
     . error
 
-state 148 (entry on exp)
+state 149 (entry on exp)
     exp : exp_'+' exp    (28)
     exp : exp_'-' exp    (29)
     exp : exp_'*' exp    (30)
@@ -2029,29 +2033,29 @@ state 148 (entry on exp)
     '-' shift 55
     '/' shift 56
     '<' shift 58
-    ';' shift 150
-    . error
-
-state 149 (entry on ';')
-    metodo : PUBLIC tipo ID '(' ')' '{' vars cmds RETURN exp ';'_'}'    (11)
-
-    '}' shift 151
+    ';' shift 151
     . error
 
 state 150 (entry on ';')
-    metodo : PUBLIC tipo ID '(' params ')' '{' vars cmds RETURN exp ';'_'}'    (12)
+    metodo : PUBLIC tipo ID '(' ')' '{' vars cmds RETURN exp ';'_'}'    (11)
 
     '}' shift 152
     . error
 
-state 151 (entry on '}')
+state 151 (entry on ';')
+    metodo : PUBLIC tipo ID '(' params ')' '{' vars cmds RETURN exp ';'_'}'    (12)
+
+    '}' shift 153
+    . error
+
+state 152 (entry on '}')
     metodo : PUBLIC tipo ID '(' ')' '{' vars cmds RETURN exp ';' '}'_    (11)
 
     '}' reduce 11
     PUBLIC reduce 11
     . error
 
-state 152 (entry on '}')
+state 153 (entry on '}')
     metodo : PUBLIC tipo ID '(' params ')' '{' vars cmds RETURN exp ';' '}'_    (12)
 
     '}' reduce 12
@@ -2059,5 +2063,5 @@ state 152 (entry on '}')
     . error
 
 44 terminals, 14 nonterminals;
-54 grammar rules, 153 states;
+54 grammar rules, 154 states;
 9 shift/reduce and 0 reduce/reduce conflicts reported.

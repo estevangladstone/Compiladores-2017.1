@@ -11,7 +11,7 @@ import minijava.ast.*;
 %token <Token> VOID MAIN STRING RETURN INT ELSE
 %token <Token> PRINTLN LENGTH TRUE FALSE THIS NULL
 %token <Token> NEW EQ NEQ AND '/' '*' '<' '!' '[' ']' NEG 
-%token <Token> ID NUM IF WHILE '.' '=' '+' '-' '(' ')' '{' '}'
+%token <Token> ID NUM IF WHILE '.' '=' '+' '-' '(' ')' '{' '}' ','
 
 %next proximo()
 %get tipo
@@ -31,11 +31,11 @@ import minijava.ast.*;
 
 /* TODO: classes de prioridade */
 
-%left NEG
-%left AND NEQ
-%left '<' EQ
+%left AND
+%left '<' NEQ EQ
 %left '+' '-'
 %left '*' '/'
+%left NEG	
 
 %%
 
@@ -49,8 +49,8 @@ classes : classes classe   { $1.add($2); $$ = $1; }
 
 /* TODO: não-terminal classe, gera nó Classe da AST, regra CLASSE na gramática */
 
-classe : CLASS ID EXTENDS ID '{' vars metodos '}'	{ $$ = new Classe($2.texto, $4.texto, $6, $7, $5.lin); }
-	   | CLASS ID '{' vars metodos '}'				{ $$ = new Classe($2.texto, $4, $5, $3.lin); }
+classe : CLASS ID '{' vars metodos '}'				{ $$ = new Classe($2.texto, $4, $5, $3.lin); } 
+	   | CLASS ID EXTENDS ID '{' vars metodos '}'	{ $$ = new Classe($2.texto, $4.texto, $6, $7, $5.lin); }
        ;
 
 vars : vars var   { $1.add($2); $$ = $1; }
@@ -62,7 +62,7 @@ var : tipo ID ';'  { $$ = new Var($1, $2.texto, $2.lin); }
 
 /* TODO: não-terminal metodos, lista de 0 ou mais métodos, regra {METODO} */
 
-metodos : metodos metodo  	{ $1.add(0, $2); $$ = $1; } 
+metodos : metodo metodos  	{ $2.add(0, $1); $$ = $2; } 
      	|          			{ $$ = new java.util.ArrayList<Metodo>(); }
      	;
 
@@ -93,31 +93,31 @@ cmds : cmd cmds  { $2.add(0, $1); $$ = $2; }
 
 // FEITO...?
 cmd : '{' cmds '}' 					{ $$ = new Bloco($2); }
-	| IF '(' exp ')' cmd 			{ $$ = new If($3, $5, $2.lin); }
 	| IF '(' exp ')' cmd ELSE cmd	{ $$ = new If($3, $5, $7, $2.lin); }
+	| IF '(' exp ')' cmd 			{ $$ = new If($3, $5, $2.lin); }
 	| WHILE '(' exp ')' cmd			{ $$ = new While($3, $5, $2.lin); }
 	| PRINTLN '(' exp ')' ';'		{ $$ = new Println($3, $2.lin); }
 	| ID '=' exp ';'				{ $$ = new Atrib($1.texto, $3, $2.lin); }
 	| ID '[' exp ']' '=' exp ';'	{ $$ = new AtribVetor($1.texto, $3, $6, $2.lin); }
 	;
 
-exp : exp '+' exp  { $$ = new Soma($1, $3, $2.lin); }
-    | exp '-' exp  { $$ = new Sub($1, $3, $2.lin); }
-    | exp '*' exp  { $$ = new Mult($1, $3, $2.lin); }
-    | exp '/' exp  { $$ = new Div($1, $3, $2.lin); }
-    | exp '<' exp  { $$ = new Menor($1, $3, $2.lin); }
-    | exp EQ exp   { $$ = new Igual($1, $3, $2.lin); }
-    | exp NEQ exp  { $$ = new Dif($1, $3, $2.lin); }
-    | exp AND exp  { $$ = new ELog($1, $3, $2.lin); }
-    | '-' exp %prec NEG { $$ = new Neg($2, $1.lin); }
-    | '!' exp      { $$ = new Nao($2, $1.lin); }
-    | TRUE         { $$ = new True(); }
-    | FALSE        { $$ = new False(); }
-    | NUM          { $$ = new Num($1.texto); }
-    | NULL         { $$ = new Null(); }
-    | NEW INT '[' exp ']' { $$ = new Vetor($4, $1.lin); }
-    | pexp '.' LENGTH     { $$ = new Length($1, $2.lin); }
-    | pexp '[' exp ']'    { $$ = new Indexa($1, $3, $2.lin); }
+exp : exp '+' exp  			{ $$ = new Soma($1, $3, $2.lin); }
+    | exp '-' exp  			{ $$ = new Sub($1, $3, $2.lin); }
+    | exp '*' exp  			{ $$ = new Mult($1, $3, $2.lin); }
+    | exp '/' exp  			{ $$ = new Div($1, $3, $2.lin); }
+    | exp '<' exp  			{ $$ = new Menor($1, $3, $2.lin); }
+    | exp EQ exp   			{ $$ = new Igual($1, $3, $2.lin); }
+    | exp NEQ exp  			{ $$ = new Dif($1, $3, $2.lin); }
+    | exp AND exp  			{ $$ = new ELog($1, $3, $2.lin); }
+    | '-' exp %prec NEG 	{ $$ = new Neg($2, $1.lin); }
+    | '!' exp      			{ $$ = new Nao($2, $1.lin); }
+    | TRUE         			{ $$ = new True(); }
+    | FALSE        			{ $$ = new False(); }
+    | NUM          			{ $$ = new Num($1.texto); }
+    | NULL         			{ $$ = new Null(); }
+    | NEW INT '[' exp ']' 	{ $$ = new Vetor($4, $1.lin); }
+    | pexp '.' LENGTH     	{ $$ = new Length($1, $2.lin); }
+    | pexp '[' exp ']'    	{ $$ = new Indexa($1, $3, $2.lin); }
     | pexp
     ;
 

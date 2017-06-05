@@ -89,12 +89,14 @@ import java.io.IOException;
 "this"      			{ return new Token(Token.THIS, yyline, yycolumn); }
 "new"      				{ return new Token(Token.NEW, yyline, yycolumn); }
 "NULL"      			{ return new Token(Token.NULL, yyline, yycolumn); }
+"&&"      				{ return new Token(Token.AND, yyline, yycolumn); }
+"=="      				{ return new Token(Token.EQ, yyline, yycolumn); }
+"!="      				{ return new Token(Token.NEQ, yyline, yycolumn); }
 
 // Caracteres reservados
-"+"|"-"|"*"|";"|"("|")"|"="	{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
-"{"|"}"|"["|"]"				{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
-"."|","|"!"|"&&"|"<"|">"	{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
-"=="|"!="|"/"				{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
+"+"|"-"|"*"|"/"|";"|"("|")"|"="	{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
+"{"|"}"|"["|"]"					{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
+"."|","|"!"|"<"|">"				{ return new Token(yytext().charAt(0), yytext() , yyline , yycolumn); }
 
 // Identificadores
 [a-zA-Z][a-zA-Z0-9_]*	{ return new Token(Token.ID, yytext(), yyline, yycolumn); }
