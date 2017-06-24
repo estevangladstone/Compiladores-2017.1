@@ -363,123 +363,104 @@ public class TypeVisitor implements Visitor<SymbolTable<String>, String> {
 
 	@Override
 	public String visit(Campo no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
-		// checar se variável foi declarada e é classe
 		String tobj = no.obj.accept(this, ctx);
 		Classe cls = classes.get(tobj);
 		if(cls == null) {
 			erros.add("objeto do acesso ao campo " + no.nome + " tem tipo " + tobj + " que não existe ou não é classe na linha " + no.lin);
 			return "int";
 		}
-		// checa se campo existe na classe
 		int icampo = cls.ncampos.indexOf(no.nome);
 		if(icampo == -1) {
 			erros.add("campo " + no.nome + " não existe na classe " + tobj + " na linha " + no.lin);
 			return "int";
 		}
-		return null;
+		return cls.tcampos.get(icampo);
 	}
 
 	@Override
 	public String visit(Dif no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
 		String tesq = no.e1.accept(this, ctx);
 		String tdir = no.e2.accept(this, ctx);
-		if(subtype(tesq, tdir) || subtype(tdir, tesq)) {
+		if(subtype(tesq, tdir) || subtype(tdir, tesq))
 			return "boolean";
-		}
 		erros.add("tipos na desigualdade da linha " + no.lin + " incompatíveis, lado esquerdo é " + tesq + " e lado direito é " + tdir);
 		return "boolean";
 	}
 
 	@Override
 	public String visit(ELog no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
-		return null;
+		String tesq = no.e1.accept(this, ctx);
+		String tdir = no.e2.accept(this, ctx);
+		if(!tesq.equals("boolean") || !tdir.equals("boolean"))
+			erros.add("tipos no E lógico da linha " + no.lin + " incompatíveis, lado esquerdo é " + tesq + " e lado direito é " + tdir + " e ambos deveriam ser booleanos");
+		return "boolean";
 	}
 
 	@Override
 	public String visit(False no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
-		// ? é só deixar em branco...?
-		return null;
+		return "boolean";
 	}
 
 	@Override
 	public String visit(Indexa no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
 		String tvet = no.vet.accept(this, ctx);
-		// checar se é vetor
 		if(!tvet.equals("int[]"))
 			erros.add("expressão " + no.vet + " na atribuição da linha " + no.lin + " não é um vetor");
 		String tind = no.ind.accept(this, ctx);
-		// checar se ind é inteiro
 		if(!tind.equals("int"))
 			erros.add("expressão " + no.vet + " na atribuição da linha " + no.lin + " é "+ no.ind +" e não um inteiro");
-		return null;
+		return "int";
 	}
 
 	@Override
 	public String visit(Length no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
-		//	checar se id é vetor
 		String texp = no.exp.accept(this, ctx);
 		if(!texp.equals("int[]"))
 			erros.add("expressão " + no.exp + " na atribuição da linha " + no.lin + " não é um vetor");
-		return null;
+		return "int";
 	}
 
 	@Override
 	public String visit(Nao no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
 		String te = no.e.accept(this, ctx);
 		if(!te.equals("boolean"))
 			erros.add("expressão da negação na linha " + no.lin + " é " + te + " e não booleana");
-		return null;
+		return "boolean";
 	}
 
 	@Override
 	public String visit(Neg no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
 		String te = no.e.accept(this, ctx);
 		if(!te.equals("int"))
 			erros.add("expressão na linha " + no.lin + " é " + te + " e não inteira");
-		return null;
+		return "int";
 	}
 
 	@Override
 	public String visit(True no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
-		// ? ok...
-		return null;
+		return "boolean";
 	}
 
 	@Override
 	public String visit(Vetor no, SymbolTable<String> ctx) {
-		// TODO Implemente esse método
 		String ttam = no.tam.accept(this, ctx);
 		if(!ttam.equals("int"))
 			erros.add("tamanho " + no.tam + " na declaração do vetor da linha " + no.lin + " não é inteiro");
-		return null;
+		return "int[]";
 	}
 
 	@Override
 	public String visit(AtribVetor no, SymbolTable<String> ctx) {
-		// TODO: Implemente esse método
-		// checar se variavel foi declarada
 		String tvar = ctx.get(no.nome);
 		if(tvar == null) {
 			erros.add("variável " + no.nome + " na atribuição da linha " + no.lin + " não declarada");
 			tvar = "int";
 		}
-		// checar se é um vetor
 		if(!tvar.equals("int[]"))
 			erros.add("variável " + no.nome + " na atribuição da linha " + no.lin + " não é um vetor");
-		// checar se indice é um inteiro
 		String tind = no.ind.accept(this, ctx);
 		if(!tind.equals("int"))
 			erros.add("o indice na atribuição ao vetor "+ no.nome +"  na linha " + no.lin + " é " + tind + " e não inteiro");
-		// checar se tipos batem
 		String trval = no.rval.accept(this, ctx);
 		if(!trval.equals("int"))
 			erros.add("tipos na atribuição da linha " + no.lin + " incompatíveis, lado direito é " + trval + " e não inteiro");
@@ -488,7 +469,6 @@ public class TypeVisitor implements Visitor<SymbolTable<String>, String> {
 
 	@Override
 	public String visit(While no, SymbolTable<String> ctx) {
-		// TODO: Implemente esse método
 		no.corpo.accept(this, ctx);
 		String tcond = no.cond.accept(this, ctx);
 		if(!tcond.equals("bool"))
